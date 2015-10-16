@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Apprendre Git</title>
+
+		<meta name="description" content="Apprendre Git">
+		<meta name="author" content="Davy MÉLINA">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Git</h1>
+					<h3>D&eacute;couvrir, Comprendre, Utiliser</h3>
+					<img style="background: white;" data-src="git_logo.png" alt="Logo">
+					<p>
+                    <small>Par <a href="mailto://davy.melina@gmail.com">Davy M&Eacute;LINA</a> - Octobre 2015</small>
+					</p>
+				</section>
+
+				<section>
+					<h2>La gestion de version</h2>
+                    <h3>Pourquoi ?</h3>
+                    <p class="fragment"><font color="#fa0">Suivre</font> l'&eacute;volution d'un ou d'un ensemble de <font color="#fa0">fichiers</font><br />au cours du temps.</p>
+				</section>
+
+				<section>
+					<h2>Les types de VCS</h2>
+                    <p class="fragment" style="text-decoration: line-through;">La m&eacute;thode <font color="#8a080">CPOLD</font> (&agrave; bannir)</p>
+                    <p class="fragment">La m&eacute;thode <font color="#fa0">Local</font>: RCS (rel: 1982)
+                    <p class="fragment">Les m&eacute;thodes <font color="#fa0">Centrales</font> (CVCS):<br />CVS (rel: 1990), SVN (rel: 2000)</p>
+                    <p class="fragment">Les m&eacute;thodes <font color="#fa0">Distribu&eacute;es</font> (DVCS):<br />Git (rel: 2005), Mercurial (rel: 2005), ...</p>
+				</section>
+				<section>
+					<h2>Histoire de Git</h2>
+                    <p class="fragment">Des origines li&eacute;es au developement du noyau Linux.</p>
+                    <p class="fragment">Fort de l'experience de BitKeeper...</p>
+                    <p class="fragment">Le nouveau DVCS devait &ecirc;tre:</p>
+					<ul>
+						<li class="fragment">rapide,</li>
+						<li class="fragment">de conception simple,</li>
+						<li class="fragment">de supporter le d&eacute;veloppent non lin&eacute;aire (branches parall&egrave;les),</li>
+						<li class="fragment">distribu&eacute;,</li>
+						<li class="fragment">capable de gerer le d&eacute;veloppement du noyau Linux.</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Git versus les autres</h2>
+                    <p>Comment sont consid&eacute;r&eacute; les donn&eacute;es dans Git ?</p>
+                    <p class="fragment">Des <font color="#fa0">instantan&eacute;s</font>, pas de diff&eacute;rences.</p>
+                    <p class="fragment"><font color="#fa0">Snapshots</font>, not Differences.</p>
+				</section>
+				<section>
+					<h2>Les autres VCS</h2>
+                    <p>Stockage des modifications par diff&eacute;rence.</p>
+                    <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/01-introduction/images/deltas.png" /></p>
+				</section>
+				<section>
+					<h2>Git</h2>
+                    <p>Stockage des modifications par instann&eacute;.</p>
+                    <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/01-introduction/images/snapshots.png" /></p>
+				</section>
+				<section>
+					<h2>Fonctionnalit&eacute;s de Git</h2>
+                    <p class="fragment">Op&eacute;rations locales (presque toutes)</p>
+                    <p class="fragment">Int&eacute;grit&eacute; (SHA1)<br />b40508769cb0aac22d9f73c8669c3a13f5e9cf0b</p>
+                    <p class="fragment">Concept d'ajout de donn&eacute;es</p>
+                    <p class="fragment">Les 3 &eacute;tats</p>
+				</section>
+				<section>
+				    <section>
+					<h2>Les 3 &eacute;tats</h2>
+                    <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/01-introduction/images/areas.png" /></p>
+				    </section>
+				    <section>
+				    	<h3>Cycle de vie des &eacute;tats des fichiers</h3>
+                        <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/02-git-basics/images/lifecycle.png" /></p>
+				    </section>
+				</section>
+                <!-- Les branche -->
+				<section data-background="#4d7e65" data-background-transition="zoom">
+					<h2>Les bases</h2>
+                </section>
+                <!-- Les base #1 -->
+				<section data-background="#4d7e65">
+				    <section>
+                        <h2>Les premier pas</h2>
+                        <p class="fragment">Param&egrave;trer son identit&eacute; dans le fichier ~/.gitconfig</p>
+                        <pre class="fragment"><code>$ git config --global user.name "Davy MELINA"</code></pre>
+                        <pre class="fragment"><code>$ git config --global user.email davy.melina@gmail.com</code></pre>
+                        <pre class="fragment"><code>$ git config --global core.editor vim</code></pre>
+                        <p class="fragment">V&eacute;rifier les param&egrave;tres</p>
+                        <pre class="fragment"><code>$ git config --list</code></pre>
+				    </section>
+				    <section>
+                        <h4>Un premier workflow simple</h4>
+                        <p class="fragment">Initialiser un d&eacute;p&ocirc;t Git</p>
+                        <pre class="fragment"><code>$ git init</code></pre>
+                        <p class="fragment">Ajouter des fichiers dans l'espace de staging</p>
+                        <pre class="fragment"><code>$ git add *.go</code></pre>
+                        <pre class="fragment"><code>$ git add README.md</code></pre>
+                        <p class="fragment">Commiter des fichiers</p>
+                        <pre class="fragment"><code>$ git commit -m "Initial import."</code></pre>
+				    </section>
+				    <section>
+                        <p>D&eacute;placer un fichiers</p>
+                        <pre class="fragment"><code>$ git mv version.go common.go</code></pre>
+                        <pre class="fragment"><code>$ git commit -m "The rewrite begin."</code></pre>
+                        <p class="fragment">Supprimer un fichiers</p>
+                        <pre class="fragment"><code>$ git rm hello.go</code></pre>
+                        <pre class="fragment"><code>$ git commit -m "Clean dead code."</code></pre>
+				    </section>
+                <!-- Les base #2, analyser -->
+				</section>
+				<section data-background="#4d7e65">
+					<section>
+					    <h2>Analyser</h2>
+                        <p class="fragment">V&eacute;rifier l'&eacute;tat des fichiers</p>
+                    	<pre class="fragment"><code>$ git status</code></pre>
+                        <pre class="fragment"><code>On branch develop
+Changes to be committed:
+  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)
+
+    modified:   common.go
+
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+    modified:   cmd/haven.go
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+
+    LICENSE</code></pre>
+					</section>
+				    <section>
+                        <p>Voir les modifications des fichiers</p>
+                        <pre class="fragment"><code>$ git diff</code></pre>
+					    <p class="fragment">Voir les modifications des fichiers en staging</p>
+                        <pre class="fragment"><code>$ git diff --staged</code></pre>
+                        <pre class="fragment"><code>index 8ebb991..643e24f 100644
+--- a/CONTRIBUTING.md
++++ b/CONTRIBUTING.md
+@@ -65,7 +65,8 @@ branch directly, things can get messy.
+ Please include a nice description of your changes when you submit your PR;
+ if we have to read the whole diff to figure out why you're contributing
+ in the first place, you're less likely to get feedback and have your change
+-merged in.
++merged in. Also, split your changes into comprehensive chunks if your patch is
++longer than a dozen lines.
+
+ If you are starting to work on a particular area, feel free to submit a PR
+ that highlights your work in progress (and note in the PR title that it's</code></pre>
+				    </section>
+				    <section>
+                    <p>Visualiser l'historique des commits</p>
+                    <pre class="fragment"><code>$ git log</code></pre>
+                    <pre class="fragment"><code>commit 4d7aee3c678f9fffe9911be79179de14bddc6914
+Author: Davy MELINA &lt;davy.melina@gmail.com&gt;
+Date:   Thu Oct 1 16:49:57 2015 +0200
+
+    Add TODO
+
+commit 43523ba7a616db94bdff240ef2d762c1e6af4ee5
+Author: Davy MELINA &lt;davy.melina@gmail.com&gt;
+Date:   Thu Oct 1 16:45:17 2015 +0200
+
+    Import new dataschema
+</code></pre>
+				    </section>
+				    <section>
+                    <p>Mieux encore</p>
+                    <pre class="fragment"><code>$ git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit</code></pre>
+                    <pre class="fragment"><code>*   49e08fa - (HEAD -&gt; develop) Merge tag 'v0.1' into develop (7 seconds ago) &lt;Davy MELINA&gt;
+|\  
+| *   17bedb2 - (tag: v0.1, master) Merge branch 'release/v0.1' (27 seconds ago) &lt;Davy MELINA&gt;
+| |\  
+| |/  
+|/|   
+* | 030c956 - First public beta (58 seconds ago) &lt;Davy MELINA&gt;
+|/  
+* 38e8c59 - Initial commit (73 seconds ago) &lt;Davy MELINA&gt;
+                    </code></pre>
+                    <pre class="fragment"><code>$ git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit"</code></pre>
+				    </section>
+				</section>
+                <!-- Les base #3, Annuler des actions -->
+				<section data-background="#4d7e65">
+				    <section>
+					    <h2>Annuler des actions</h2>
+                        <p class="fragment">Modifier le dernier commit</p>
+                        <pre class="fragment"><code>$ git commit --amend</code></pre>
+                        <p class="fragment">Un exemple ?</p>
+                        <pre class="fragment"><code>$ git add README.md</code></pre>
+                        <pre class="fragment"><code>$ git add *.go</code></pre>
+                        <pre class="fragment"><code>$ git commit -m "Initial import."</code></pre>
+                        <pre class="fragment"><code>$ git add LICENSE</code></pre>
+                        <pre class="fragment"><code>$ git commit --amend -m "Initial import."</code></pre>
+				    </section>
+				    <section>
+                        <p>Enlever du staging un fichier</p>
+                        <pre class="fragment"><code>$ git reset HEAD hello.go</code></pre>
+				    </section>
+				    <section>
+                        <p>Un exemple ?</p>
+                        <pre class="fragment"><code>$ git add .</code></pre>
+                        <pre class="fragment"><code>$ git status</code></pre>
+                        <pre class="fragment"><code>On branch master
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+    modified:   README
+    modified:   hello.go
+
+</code></pre>
+                        <pre class="fragment"><code>$ git reset HEAD hello.go</code></pre>
+                        <pre class="fragment"><code>$ git status</code></pre>
+                        <pre class="fragment"><code>On branch master
+Changes to be committed:
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
+
+    modified:   README
+
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+
+    modified:   hello.go
+
+</code></pre>
+				    </section>
+				</section>
+                <!-- Les base #4, Ignorer des actions -->
+				<section data-background="#4d7e65">
+				    <section>
+					    <h2>Ignorer des fichiers</h2>
+                        <p class="fragment">Le fichier .gitignore</p>
+                        <pre class="fragment"><code>*.[oa]
+*~
+</code></pre>
+                        <p class="fragment">R&eacute;gles du fichier .gitignore</p>
+                        <ul>
+                            <li class="fragment">Les lignes vides ou commen&ccedil;ant par # sont ignor&eacute;es</li>
+                            <li class="fragment">Pattern suivi d'un / consid&eacute;r&eacute; comme r&eacute;pertoire (eg: public/)</li>
+                            <li class="fragment">Ligne qui commence par ! indique l'inclusion du pattern malgr&egrave;s les r&eacute;gles pr&eacute;c&eacute;dentes</li>
+                        </ul>
+
+				    </section>
+				    <section>
+                        <p>Exemple de fichier .gitignore</p>
+                        
+                        <pre class="fragment"><code># ignorer les fichier *.a mais suivre lib.a
+*.a
+!lib.a
+
+# ignorer uniquement le fichier TODO &agrave; la racine du projet
+/TODO
+
+# ignorer tous les fichiers dans le r&eacute;pertoire build
+build/
+
+# ignorer doc/notes.txt, mais pas doc/server/arch.txt
+doc/*.txt
+
+# ignorer tous les fichiers .txt sous le r&eacute;pertoire doc/
+doc/**/*.txt</code></pre>
+				    </section>
+				</section>
+                <!-- Les base #5, Repos distant -->
+				<section data-background="#4d7e65">
+				    <section>
+					    <h2>Les &eacute;tiquette / Les tags</h2>
+                        <p class="fragment">Voir les tags</p>
+                        <pre class="fragment"><code>$ git tag</code></pre>
+                        <pre class="fragment"><code>v0.1
+v0.2
+v0.3</code></pre>
+                        <p class="fragment">Voir les tags d'un motif particulier</p>
+                        <pre class="fragment"><code>$ git tag -l "v1.8.*"</code></pre>
+                        <pre class="fragment"><code>v0.1.8-rc0
+v1.8.2
+v1.8.3</code></pre>
+				    </section>
+				    <section>
+                        <p>Cr&eacute;er un tag simple sur le dernier commit</p>
+                        <pre class="fragment"><code>$ git tag v0.2</code></pre>
+                        <p class="fragment">Cr&eacute;er un tag simple apr&egrave;s coup</p>
+                        <pre class="fragment"><code>$ git tag v0.1 112772e</code></pre>
+                        <p class="fragment">Cr&eacute;er un tag annot&eacute;</p>
+                        <pre class="fragment"><code>$ git tag -a v0.3 -m "Beta public"</code></pre>
+                        <p class="fragment">Voir un tag annot&eacute;</p>
+                        <pre class="fragment"><code>$ git show v0.3</code></pre>
+                        <pre class="fragment"><code>tag v0.3
+Tagger: Davy MELINA &lt;davy.melina@gmail.com&gt;
+Date:   Fri Oct 16 12:11:26 2015 +0200
+
+Beta public
+
+commit 57be19774152f2615b8795594f9d97ae1bd16e0b
+Author: Davy MELINA &lt;davy.melina@gmail.com&gt;
+Date:   Wed Oct 14 18:01:15 2015 +0200
+
+    test
+</code></pre>
+				    </section>
+				</section>
+
+                <!-- Les base #6, Repos distant -->
+				<section data-background="#4d7e65">
+					<h3>Premier pas avec un d&eacute;p&ocirc;t distant</h3>
+                    <p class="fragment">Cloner un d&eacute;p&ocirc;t distant (HTTPS/SSH)</p>
+                    <pre class="fragment"><code>$ git clone https://github.com/dmelina/apprendre-git.git</code></pre>
+                    <pre class="fragment"><code>$ git clone git@github.com:dmelina/apprendre-git.git</code></pre>
+                    <p class="fragment">Pousser des commits sur un d&eacute;p&ocirc;t distant</p>
+                    <pre class="fragment"><code>$ git push</code></pre>
+                    <p class="fragment">Pousser des commits et tout les tags sur un d&eacute;p&ocirc;t distant</p>
+                    <pre class="fragment"><code>$ git push --tags</code></pre>
+                    <p class="fragment">Pousser des commits et des tags &agrave; partir d'un d&eacute;p&ocirc;t cr&eacute;&eacute; en local</p>
+                    <pre class="fragment"><code>$ git remote add origin git@github.com:dmelina/apprendre-git.git</code></pre>
+                    <pre class="fragment"><code>$ git push -u origin master</code></pre>
+                    <pre class="fragment"><code>$ git push origin --tags</code></pre>
+				</section>
+
+                <!-- Les branches -->
+				<section data-background="#b5533c">
+					<h2>Les branches</h2>
+                </section>
+				<section data-background="#b5533c">
+					<h2>D&eacute;finition</h2>
+                    <p class="fragment">Cr&eacute;er une branche signifie diverger de la ligne principale de d&eacute;veloppement et continuer &agrave; travailler sans impacter cette ligne.</p>
+                </section>
+				    <section data-background="#b5533c">
+                        <section>
+				    	<h2>Concr&egrave;tement ?</h2>
+                        <pre class="fragment"><code>$ git add README test.rb LICENSE
+$ git commit -m "initial commit of my project"</code></pre>
+                        <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commit-and-tree.png" /></p>
+                        </section>
+                    <section>
+                        <h2>Et si on commits encore ?</h2>
+                        <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commits-and-parents.png" /></p>
+                    </section>
+                    <section>
+                        <h2>Vue globale d'une branche</h2>
+                        <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/03-git-branching/images/branch-and-history.png" /></p>
+                    </section>
+                    <section>
+                        <h2>Une <font color="#fa0">branche</font> &eacute;gal un <font color="#fa0">pointeur</font></h2>
+                        <p class="fragment">Ce pointeur r&eacute;f&eacute;rence un <font color="#fa0">commit</font></p>
+                        <p class="fragment">La branche par d&eacute;faut sur Git est <font color="#fa0">master</font></p>
+                    </section>
+                </section>
+
+                <!-- Git Flow -->
+				<section data-background="#666633">
+					<h2>Git Flow</h2>
+                </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
