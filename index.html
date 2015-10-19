@@ -387,6 +387,113 @@ $ git commit -m "initial commit of my project"</code></pre>
 				<section data-background="#666633">
 					<h2>Git Flow</h2>
                 </section>
+				<section data-background="#666633">
+                    <section>
+					    <h2>Branches: les bases</h2>
+                        <p class="fragment">Voir les branches</p>
+                        <pre class="fragment"><code>$ git branch</code></pre>
+                        <p class="fragment">Cr&eacute;er une branche locale</p>
+                        <pre class="fragment"><code>$ git branch &lt;branch&gt;</code></pre>
+                        <p class="fragment">Se d&eacute;placer dans une branche</p>
+                        <pre class="fragment"><code>$ git checkout &lt;branch&gt;</code></pre>
+                        <p class="fragment">Merger une branche</p>
+                        <pre class="fragment"><code>$ git merge &lt;branch&gt;</code></pre>
+                    </section>
+                    <section>
+					    <h3>Un exemple ?</h3>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-1.png" /></p>
+                    </section>
+                    <section>
+                        <p>Cr&eacute;er une branche locale: issue53</p>
+                        <pre class="fragment"><code>$ git branch issue53</code></pre>
+                        <p class="fragment">Se d&eacute;placer dans la branche locale: issue53</p>
+                        <pre class="fragment"><code>$ git checkout issue43</code></pre>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-2.png" /></p>
+                    </section>
+                    <section>
+                        <h4>On travail un peu !</h4>
+                        <pre class="fragment"><code>$ vim client.go client_test.go server.go</code></pre>
+                        <pre class="fragment"><code>$ git add client_test.go
+$ git commit -m "Change the test"
+$ git add client.go
+$ git commit -m "Fix return"
+$ git add server.go
+$ git commit -m "Change the default HTTP timeout"</code></pre>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-3.png" /></p>
+                    </section>
+                    <section>
+                        <h4>Merge (Fast Forward)</h4>
+                        <pre class="fragment"><code>$ git checkout master</code></pre>
+                        <pre class="fragment"><code>$ git merge issue53
+Updating f0b34ad..4c0bbfc
+Fast-forward
+ client.go | 3 ++-
+ client_test.go | 3 ++-
+ server.go | 3 ++-
+ 3 file changed, 6 insertions(+), 3 deletion(-)
+</code></pre>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-4.png" /></p>
+                    </section>
+                    <section>
+                        <h4>Merge (No Fast Forward)</h4>
+                        <pre class="fragment"><code>$ git merge -no-ff issue53 -m "Merge branch 'issue53'"
+Merge made by the 'recursive' strategy.
+ client.go | 4 ++++
+ client_test.go | 4 ++++
+ server.go | 4 ++++
+ 3 file changed, 12 insertions(+)
+</code></pre>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-5.png" /></p>
+                    </section>
+                    <section>
+					    <h3>Un autre exemple ?</h3>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-6.png" /></p>
+                    </section>
+                    <section>
+                        <h4>Hotfix !</h4>
+                        <pre class="fragment"><code>$ git checkout master</code></pre>
+                        <pre class="fragment"><code>$ git checkout -b hotfix</code></pre>
+                        <pre class="fragment"><code>$ vim client.go</code></pre>
+                        <pre class="fragment"><code>$ git add client.go
+$ git commit client.go -m "Hotfix 001"</code></pre>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-7.png" /></p>
+                    </section>
+                    <section>
+                        <h4>C'est ok pour le hotfix ?</h4>
+                        <pre class="fragment"><code>$ git checkout master</code></pre>
+                        <pre class="fragment"><code>$ git merge hotfix</code></pre>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-8.png" /></p>
+                    </section>
+                    <section>
+                        <h4>Et mon issue53 ?</h4>
+                        <pre class="fragment"><code>$ git merge issue53</code></pre>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-9.png" /></p>
+                    </section>
+                    <section>
+                        <h4>Three-way merge</h4>
+                        <ul>
+                            <li class="fragment">Le meilleur anc&ecirc;tre commun des deux branches</li>
+                            <li class="fragment">Le snapshot de la branche d'origine</li>
+                            <li class="fragment">Le snapshot de la branche destination</li>                       </ul>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-10.png" /></p>
+                        <p class="fragment">C8 est un <font color="#fa0">merge commit</font> qui a <font color="#fa0">deux parents</font></p>
+                    </section>
+                    <section>
+                        <h4>G&ecirc;rer les conflits</h4>
+                        <pre class="fragment"><code>$ git merge doc123</code></pre>
+                        <pre class="fragment"><code>Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+                        <pre class="fragment"><code>&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+davy anilem
+=======
+davy melina
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; test</code></pre> 
+                        <pre class="fragment"><code>$ git add README</code></pre>
+                        <pre class="fragment"><code>$ git commit</code></pre>
+                    </section>
+                </section>
 
 			</div>
 
