@@ -42,11 +42,10 @@
 			<div class="slides">
 				<section>
 					<h1>Git</h1>
-					<h3>D&eacute;couvrir, Comprendre, Utiliser</h3>
+					<h4>the stupid content tracker</h4>
 					<img style="background: white;" data-src="git_logo.png" alt="Logo">
-					<p>
-                    <small>Par <a href="mailto://davy.melina@gmail.com">Davy M&Eacute;LINA</a> - Octobre 2015</small>
-					</p>
+					<h3>D&eacute;couvrir, Comprendre, Utiliser</h3>
+					<p><small>Par <a href="mailto://davy.melina@gmail.com">Davy M&Eacute;LINA</a> - Octobre 2015</small></p>
 				</section>
 
 				<section>
@@ -227,11 +226,14 @@ Date:   Thu Oct 1 16:45:17 2015 +0200
                         <pre class="fragment"><code>$ git add *.go</code></pre>
                         <pre class="fragment"><code>$ git commit -m "Initial import."</code></pre>
                         <pre class="fragment"><code>$ git add LICENSE</code></pre>
-                        <pre class="fragment"><code>$ git commit --amend -m "Initial import."</code></pre>
+                        <p class="fragment">R&eacute;cuperer un fichier</p>
+                        <pre class="fragment"><code>$ git checkout -- LICENSE</code></pre>
+                        <p class="fragment">Revenir &agrave; un snapshot</p>
+                        <pre class="fragment"><code>$ git reset --hard &lt;commit&gt;</code></pre>
 				    </section>
 				    <section>
                         <p>Enlever du staging un fichier</p>
-                        <pre class="fragment"><code>$ git reset HEAD hello.go</code></pre>
+                        <pre class="fragment"><code>$ git reset HEAD &lt;file&gt;</code></pre>
 				    </section>
 				    <section>
                         <p>Un exemple ?</p>
@@ -337,29 +339,13 @@ Date:   Wed Oct 14 18:01:15 2015 +0200
 				    </section>
 				</section>
 
-                <!-- Les base #6, Repos distant -->
-				<section data-background="#4d7e65">
-					<h3>Premier pas avec un d&eacute;p&ocirc;t distant</h3>
-                    <p class="fragment">Cloner un d&eacute;p&ocirc;t distant (HTTPS/SSH)</p>
-                    <pre class="fragment"><code>$ git clone https://github.com/dmelina/apprendre-git.git</code></pre>
-                    <pre class="fragment"><code>$ git clone git@github.com:dmelina/apprendre-git.git</code></pre>
-                    <p class="fragment">Pousser des commits sur un d&eacute;p&ocirc;t distant</p>
-                    <pre class="fragment"><code>$ git push</code></pre>
-                    <p class="fragment">Pousser des commits et tout les tags sur un d&eacute;p&ocirc;t distant</p>
-                    <pre class="fragment"><code>$ git push --tags</code></pre>
-                    <p class="fragment">Pousser des commits et des tags &agrave; partir d'un d&eacute;p&ocirc;t cr&eacute;&eacute; en local</p>
-                    <pre class="fragment"><code>$ git remote add origin git@github.com:dmelina/apprendre-git.git</code></pre>
-                    <pre class="fragment"><code>$ git push -u origin master</code></pre>
-                    <pre class="fragment"><code>$ git push origin --tags</code></pre>
-				</section>
-
                 <!-- Les branches -->
 				<section data-background="#b5533c">
 					<h2>Les branches</h2>
                 </section>
 				<section data-background="#b5533c">
 					<h2>D&eacute;finition</h2>
-                    <p class="fragment">Cr&eacute;er une branche signifie diverger de la ligne principale de d&eacute;veloppement et continuer &agrave; travailler sans impacter cette ligne.</p>
+                    <p class="fragment">Cr&eacute;er une <font color="#fa0">branche</font> signifie <font color="#fa0">diverger</font> de la ligne principale de d&eacute;veloppement et <font color="#fa0">continuer</font> &agrave; travailler sans impacter cette ligne.</p>
                 </section>
 				    <section data-background="#b5533c">
                         <section>
@@ -383,17 +369,19 @@ $ git commit -m "initial commit of my project"</code></pre>
                     </section>
                 </section>
 
-                <!-- Git Flow -->
+                <!-- Manipuler les branches -->
 				<section data-background="#666633">
-					<h2>Git Flow</h2>
+					<h2>Manipuler les branches</h2>
                 </section>
 				<section data-background="#666633">
                     <section>
-					    <h2>Branches: les bases</h2>
+					    <h2>Les bases</h2>
                         <p class="fragment">Voir les branches</p>
                         <pre class="fragment"><code>$ git branch</code></pre>
-                        <p class="fragment">Cr&eacute;er une branche locale</p>
+                        <p class="fragment">Cr&eacute;er une branche</p>
                         <pre class="fragment"><code>$ git branch &lt;branch&gt;</code></pre>
+                        <p class="fragment">Effacer une branche</p>
+                        <pre class="fragment"><code>$ git branch -d &lt;branch&gt;</code></pre>
                         <p class="fragment">Se d&eacute;placer dans une branche</p>
                         <pre class="fragment"><code>$ git checkout &lt;branch&gt;</code></pre>
                         <p class="fragment">Merger une branche</p>
@@ -470,7 +458,7 @@ $ git commit client.go -m "Hotfix 001"</code></pre>
                         <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-branch-9.png" /></p>
                     </section>
                     <section>
-                        <h4>Three-way merge</h4>
+                        <h4>3-way merge algorithm</h4>
                         <ul>
                             <li class="fragment">Le meilleur anc&ecirc;tre commun des deux branches</li>
                             <li class="fragment">Le snapshot de la branche d'origine</li>
@@ -490,10 +478,121 @@ Automatic merge failed; fix conflicts and then commit the result.
 davy anilem
 =======
 davy melina
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; test</code></pre> 
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; doc123</code></pre> 
                         <pre class="fragment"><code>$ git add README</code></pre>
                         <pre class="fragment"><code>$ git commit</code></pre>
                     </section>
+                    <section>
+                        <h2>Rebase</h2>
+                    </section>
+                    <section>
+                        <h2>Cherry-pick</h2>
+                    </section>
+                    <section>
+                        <h2>Stash</h2>
+                    </section>
+                </section>
+
+                <!-- Les Repos distant -->
+				<section data-background="#336699">
+					<h2>Les d&eacute;p&ocirc;ts distants</h2>
+                </section>
+				<section data-background="#336699">
+                    <section>
+                       <h2>Les origines</h2>
+                       <p class="fragment">Une <font color="#fa0">origine</font> correspond &agrave; d&eacute;p&ocirc;ts <font color="#fa0">distant</font></p>
+                       <p class="fragment">Un d&eacute;p&ocirc;t <font color="#fa0">local</font> peut avoir <font color="#fa0">plusieurs origines</font></p>
+                       <p class="fragment">Une <font color="#fa0">origine</font> contient <font color="#fa0">une ou plusieurs branches</font></p>
+                    </section>
+                    <section>
+                       <h3>Les bases</h3>
+                        <p class="fragment">Voir les origines</p>
+                        <pre class="fragment"><code>$ git remote -v</code></pre>
+                        <pre class="fragment"><code>origin  git@github.com:dmelina/apprendre-git.git (fetch)
+origin  git@github.com:dmelina/apprendre-git.git (push)
+</code></pre>
+                        <p class="fragment">Ajouter une origine</p>
+                        <pre class="fragment"><code>$ git remote add chezwam https://chez.wam/apprendre-git.git</code></pre>
+                        <pre class="fragment"><code>$ git remote -v</code></pre>
+                        <pre class="fragment"><code>chezwam https://chez.wam/apprendre-git.git (fetch)
+chezwam https://chez.wam/apprendre-git.git (push)
+</code></pre>
+                        <p class="fragment">Renommer une origine</p>
+                        <pre class="fragment"><code>$ git remote rename chezwam chezwat</code></pre>
+                        <p class="fragment">Effacer une origine</p>
+                        <pre class="fragment"><code>$ git remote rm chezwat</code></pre>
+                    </section>
+                    <section>
+                        <p>Avoir plus d'informations sur une origine</p>
+                        <pre class="fragment"><code>$ git remote show origin</code></pre>
+                        <pre class="fragment"><code>* remote origin
+  Fetch URL: git@github.com:dmelina/apprendre-git.git
+  Push  URL: git@github.com:dmelina/apprendre-git.git
+  HEAD branch: master
+  Remote branches:
+    master        tracked
+    develop       tracked
+  Local branches configured for 'git pull':
+    master        merges with remote master
+    develop       merges with remote develop
+  Local refs configured for 'git push':
+    master        pushes to master        (up to date)
+    develop       pushes to develop (fast-forwardable)
+</code></pre>
+
+                    </section>
+                    <section>
+					    <h3>Premier pas avec un d&eacute;p&ocirc;t distant</h3>
+                        <p class="fragment">Cloner un d&eacute;p&ocirc;t distant (SSH)</p>
+                        <pre class="fragment"><code>$ git clone git@github.com:dmelina/apprendre-git.git</code></pre>
+                        <p class="fragment">Pousser des commits sur un d&eacute;p&ocirc;t distant</p>
+                        <pre class="fragment"><code>$ git push</code></pre>
+                        <pre class="fragment"><code>$ git push -u origin develop</code></pre>
+                        <p class="fragment">Pousser des commits et les tags sur un d&eacute;p&ocirc;t distant</p>
+                        <pre class="fragment"><code>$ git push --tags</code></pre>
+                        <p class="fragment">R&eacute;cuper des commits</p>
+                        <pre class="fragment"><code>$ git pull</code></pre>
+                        <p class="fragment">Effacer une branche remote</p>
+                        <pre class="fragment"><code>$ git branch -d &lt;branch&gt;</code></pre>
+                        <pre class="fragment"><code>$ git push --all --prune</code></pre>
+                    </section>
+				</section>
+
+                <!-- Git Flow -->
+				<section data-background="#666633">
+				    <section data-background="#666633">
+					<h2>Git Flow</h2>
+                    </section>
+				    <section data-background="#666633">
+					    <h4>Cr&eacute;ation d'une feature</h4>
+                        <p><img style="background: white; padding: 10px;" data-src="images/git-flow-1.png" /></p>
+                    </section>
+				    <section data-background="#666633">
+					    <h4>Merge de la feature</h4>
+                        <p><img style="background: white; padding: 10px;" data-src="images/git-flow-2.png" /></p>
+                    </section>
+				    <section data-background="#666633">
+					    <h4>Pr&eacute;paration de la release</h4>
+                        <p><img style="background: white; padding: 10px;" data-src="images/git-flow-3.png" /></p>
+                    </section>
+				    <section data-background="#666633">
+					    <h4>Merge de la release</h4>
+                        <p><img style="background: white; padding: 10px;" data-src="images/git-flow-4.png" /></p>
+                    </section>
+				    <section data-background="#666633">
+					    <h4>Pr&eacute;paration d'un hotfix</h4>
+                        <p><img style="background: white; padding: 10px;" data-src="images/git-flow-5.png" /></p>
+                    </section>
+				    <section data-background="#666633">
+					    <h4>Merge du hotfix et backport</h4>
+                        <p><img style="background: white; padding: 10px;" data-src="images/git-flow-6.png" /></p>
+                    </section>
+				    <section data-background="#666633">
+					    <h2>Pull request</h2>
+                    </section>
+                </section>
+                <section>
+                    <h2>Des questions ?</h2>
                 </section>
 
 			</div>
