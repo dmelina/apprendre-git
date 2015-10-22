@@ -42,71 +42,95 @@
 			<div class="slides">
 				<section>
 					<h1>Git</h1>
-					<h4>the stupid content tracker</h4>
+					<h4>The stupid content tracker</h4>
 					<img style="background: white;" data-src="git_logo.png" alt="Logo">
 					<h3>D&eacute;couvrir, Comprendre, Utiliser</h3>
 					<p><small>Par <a href="mailto://davy.melina@gmail.com">Davy M&Eacute;LINA</a> - Octobre 2015</small></p>
 				</section>
-
 				<section>
-					<h2>La gestion de version</h2>
-                    <h3>Pourquoi ?</h3>
-                    <p class="fragment"><font color="#fa0">Suivre</font> l'&eacute;volution d'un ou d'un ensemble de <font color="#fa0">fichiers</font><br />au cours du temps.</p>
+                    <h2>Au sommaire</h2>
+                    <ul>
+                        <li class="fragment">Pourquoi Git ?</li>
+                        <li class="fragment">Les bases</li>
+                        <li class="fragment">Les branches</li>
+                        <li class="fragment">Manipuler les branches</li>
+                        <li class="fragment">Les d&eacute;p&ocirc;ts distants</li>
+                        <li class="fragment">Git Flow</li>
+                        <li class="fragment">Comment aller plus loin</li>
+                    </ul>
 				</section>
 
-				<section>
-					<h2>Les types de VCS</h2>
-                    <p class="fragment" style="text-decoration: line-through;">La m&eacute;thode <font color="#8a080">CPOLD</font> (&agrave; bannir)</p>
-                    <p class="fragment">La m&eacute;thode <font color="#fa0">Local</font>: RCS (rel: 1982)
-                    <p class="fragment">Les m&eacute;thodes <font color="#fa0">Centrales</font> (CVCS):<br />CVS (rel: 1990), SVN (rel: 2000)</p>
-                    <p class="fragment">Les m&eacute;thodes <font color="#fa0">Distribu&eacute;es</font> (DVCS):<br />Git (rel: 2005), Mercurial (rel: 2005), ...</p>
-				</section>
-				<section>
-					<h2>Histoire de Git</h2>
-                    <p class="fragment">Des origines li&eacute;es au developement du noyau Linux.</p>
-                    <p class="fragment">Fort de l'experience de BitKeeper...</p>
-                    <p class="fragment">Le nouveau DVCS devait &ecirc;tre:</p>
-					<ul>
-						<li class="fragment">rapide,</li>
-						<li class="fragment">de conception simple,</li>
-						<li class="fragment">de supporter le d&eacute;veloppent non lin&eacute;aire (branches parall&egrave;les),</li>
-						<li class="fragment">distribu&eacute;,</li>
-						<li class="fragment">capable de gerer le d&eacute;veloppement du noyau Linux.</li>
-					</ul>
-				</section>
-				<section>
-					<h2>Git versus les autres</h2>
-                    <p>Comment sont consid&eacute;r&eacute; les donn&eacute;es dans Git ?</p>
-                    <p class="fragment">Des <font color="#fa0">instantan&eacute;s</font>, pas de diff&eacute;rences.</p>
-                    <p class="fragment"><font color="#fa0">Snapshots</font>, not Differences.</p>
-				</section>
-				<section>
-					<h2>Les autres VCS</h2>
-                    <p>Stockage des modifications par diff&eacute;rence.</p>
-                    <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/01-introduction/images/deltas.png" /></p>
-				</section>
-				<section>
-					<h2>Git</h2>
-                    <p>Stockage des modifications par instann&eacute;.</p>
-                    <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/01-introduction/images/snapshots.png" /></p>
-				</section>
-				<section>
-					<h2>Fonctionnalit&eacute;s de Git</h2>
-                    <p class="fragment">Op&eacute;rations locales (presque toutes)</p>
-                    <p class="fragment">Int&eacute;grit&eacute; (SHA1)<br />b40508769cb0aac22d9f73c8669c3a13f5e9cf0b</p>
-                    <p class="fragment">Concept d'ajout de donn&eacute;es</p>
-                    <p class="fragment">Les 3 &eacute;tats</p>
-				</section>
-				<section>
+                <section>
 				    <section>
-					<h2>Les 3 &eacute;tats</h2>
+                        <h2>Pourquoi Git ?</h3>
+				    </section>
+
+				    <section>
+				    	<h3>Pourquoi faire de la gestion de version ?</h3>
+                        <p class="fragment"><font color="#fa0">Suivre</font> l'&eacute;volution d'un ou d'un ensemble de <font color="#fa0">fichiers</font><br />au cours du temps.</p>
+				    </section>
+
+				    <section>
+				    	<h2>Les types de VCS</h2>
+                        <ul>
+                        <li class="fragment" style="text-decoration: line-through;">La m&eacute;thode <font color="#8a080">CPOLD</font> (&agrave; bannir)</li>
+                        <li class="fragment">La m&eacute;thode <font color="#fa0">Locale</font>: RCS (rel: 1982)</li>
+                        <li class="fragment">Les m&eacute;thodes <font color="#fa0">Centrales</font> (CVCS):<br />CVS (rel: 1990), SVN (rel: 2000)</li>
+                        <li class="fragment">Les m&eacute;thodes <font color="#fa0">Distribu&eacute;es</font> (DVCS):<br />Git (rel: 2005), Mercurial (rel: 2005), ...</li>
+                        </ul>
+				    </section>
+
+				    <section>
+				    	<h2>Histoire de Git</h2>
+                        <p class="fragment">Des origines li&eacute;es au developement du noyau Linux.</p>
+                        <p class="fragment">Fort de l'experience de BitKeeper...</p>
+                        <p class="fragment">Le nouveau DVCS devait &ecirc;tre:</p>
+				    	<ul>
+				    		<li class="fragment">rapide,</li>
+				    		<li class="fragment">de conception simple,</li>
+				    		<li class="fragment">de supporter le d&eacute;veloppent non lin&eacute;aire (branches parall&egrave;les),</li>
+				    		<li class="fragment">distribu&eacute;,</li>
+				    		<li class="fragment">capable de gerer le d&eacute;veloppement du noyau Linux.</li>
+				    	</ul>
+				    </section>
+                    
+				    <section>
+				    	<h2>Git versus les autres</h2>
+                        <p>Comment sont consid&eacute;r&eacute; les donn&eacute;es dans Git ?</p>
+                        <p class="fragment">Des <font color="#fa0">instantan&eacute;s</font>, pas de diff&eacute;rences.</p>
+                        <p class="fragment"><font color="#fa0">Snapshots</font>, not Differences.</p>
+				    </section>
+
+				    <section>
+				    	<h2>Les autres VCS</h2>
+                        <p>Stockage des modifications par diff&eacute;rence.</p>
+                        <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/01-introduction/images/deltas.png" /></p>
+				    </section>
+
+				    <section>
+				    	<h2>Git</h2>
+                        <p>Stockage des modifications par instann&eacute;.</p>
+                        <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/01-introduction/images/snapshots.png" /></p>
+				    </section>
+
+				    <section>
+				    	<h2>Fonctionnalit&eacute;s de Git</h2>
+                        <p class="fragment">Op&eacute;rations locales (presque toutes)</p>
+                        <p class="fragment">Int&eacute;grit&eacute; (SHA1)<br />b40508769cb0aac22d9f73c8669c3a13f5e9cf0b</p>
+                        <p class="fragment">Concept d'ajout de donn&eacute;es</p>
+                        <p class="fragment">Les 3 &eacute;tats</p>
+				    </section>
+
+				    <section>
+				    <h2>Les 3 &eacute;tats</h2>
                     <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/01-introduction/images/areas.png" /></p>
 				    </section>
+
 				    <section>
 				    	<h3>Cycle de vie des &eacute;tats des fichiers</h3>
                         <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/02-git-basics/images/lifecycle.png" /></p>
 				    </section>
-				</section>
+                </section>
                 <!-- Les branche -->
 				<section data-background="#4d7e65" data-background-transition="zoom">
 					<h2>Les bases</h2>
@@ -341,41 +365,48 @@ Date:   Wed Oct 14 18:01:15 2015 +0200
 
                 <!-- Les branches -->
 				<section data-background="#b5533c">
-					<h2>Les branches</h2>
-                </section>
-				<section data-background="#b5533c">
+
+				    <section data-transition="convex">
+					    <h2>Les branches</h2>
+                    </section>
+
+                    <section>
 					<h2>D&eacute;finition</h2>
                     <p class="fragment">Cr&eacute;er une <font color="#fa0">branche</font> signifie <font color="#fa0">diverger</font> de la ligne principale de d&eacute;veloppement et <font color="#fa0">continuer</font> &agrave; travailler sans impacter cette ligne.</p>
-                </section>
-				    <section data-background="#b5533c">
-                        <section>
-				    	<h2>Concr&egrave;tement ?</h2>
-                        <pre class="fragment"><code>$ git add README test.rb LICENSE
-$ git commit -m "initial commit of my project"</code></pre>
-                        <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commit-and-tree.png" /></p>
-                        </section>
+                    </section>
+
+                    <section>
+				    <h2>Concr&egrave;tement ?</h2>
+                    <pre class="fragment"><code>$ git add README test.rb LICENSE
+$ git commit -m "ini commit of my project"</code></pre>
+                    <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commit-and-tree.png" /></p>
+                    </section>
+
                     <section>
                         <h2>Et si on commits encore ?</h2>
                         <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commits-and-parents.png" /></p>
                     </section>
+
                     <section>
                         <h2>Vue globale d'une branche</h2>
                         <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/03-git-branching/images/branch-and-history.png" /></p>
                     </section>
+
                     <section>
                         <h2>Une <font color="#fa0">branche</font> &eacute;gal un <font color="#fa0">pointeur</font></h2>
                         <p class="fragment">Ce pointeur r&eacute;f&eacute;rence un <font color="#fa0">commit</font></p>
                         <p class="fragment">La branche par d&eacute;faut sur Git est <font color="#fa0">master</font></p>
                     </section>
+
                 </section>
 
                 <!-- Manipuler les branches -->
 				<section data-background="#666633">
-					<h2>Manipuler les branches</h2>
-                </section>
-				<section data-background="#666633">
+				    <section data-transition="convex">
+				    	<h2>Manipuler les branches</h2>
+				    	<h4>Merge et Rebase</h4>
+                    </section>
                     <section>
-					    <h2>Les bases</h2>
                         <p class="fragment">Voir les branches</p>
                         <pre class="fragment"><code>$ git branch</code></pre>
                         <p class="fragment">Cr&eacute;er une branche</p>
@@ -384,8 +415,13 @@ $ git commit -m "initial commit of my project"</code></pre>
                         <pre class="fragment"><code>$ git branch -d &lt;branch&gt;</code></pre>
                         <p class="fragment">Se d&eacute;placer dans une branche</p>
                         <pre class="fragment"><code>$ git checkout &lt;branch&gt;</code></pre>
-                        <p class="fragment">Merger une branche</p>
+                        <p class="fragment">Merge d'une branche</p>
                         <pre class="fragment"><code>$ git merge &lt;branch&gt;</code></pre>
+                        <p class="fragment">Rebase d'une branche</p>
+                        <pre class="fragment"><code>$ git rebase &lt;branch&gt;</code></pre>
+                    </section>
+				    <section data-transition="convex">
+				    	<h2>Merge</h2>
                     </section>
                     <section>
 					    <h3>Un exemple ?</h3>
