@@ -56,7 +56,7 @@
                         <li class="fragment">Manipuler les branches</li>
                         <li class="fragment">Les d&eacute;p&ocirc;ts distants</li>
                         <li class="fragment">Git Flow</li>
-                        <li class="fragment">Comment aller plus loin</li>
+                        <li class="fragment">Comment aller plus loin ?</li>
                     </ul>
 				</section>
 
@@ -82,9 +82,10 @@
 
 				    <section>
 				    	<h2>Histoire de Git</h2>
-                        <p class="fragment">Des origines li&eacute;es au developement du noyau Linux.</p>
-                        <p class="fragment">Fort de l'experience de BitKeeper...</p>
-                        <p class="fragment">Le nouveau DVCS devait &ecirc;tre:</p>
+                        <ul style="list-style-type: none;">
+                        <li class="fragment">Des origines li&eacute;es au developement du noyau Linux.</li>
+                        <li class="fragment">Fort de l'experience de BitKeeper...</li>
+                        <li class="fragment">Le nouveau DVCS devait &ecirc;tre:</li>
 				    	<ul>
 				    		<li class="fragment">rapide,</li>
 				    		<li class="fragment">de conception simple,</li>
@@ -92,6 +93,7 @@
 				    		<li class="fragment">distribu&eacute;,</li>
 				    		<li class="fragment">capable de gerer le d&eacute;veloppement du noyau Linux.</li>
 				    	</ul>
+                        </ul>
 				    </section>
                     
 				    <section>
@@ -115,10 +117,12 @@
 
 				    <section>
 				    	<h2>Fonctionnalit&eacute;s de Git</h2>
-                        <p class="fragment">Op&eacute;rations locales (presque toutes)</p>
-                        <p class="fragment">Int&eacute;grit&eacute; (SHA1)<br />b40508769cb0aac22d9f73c8669c3a13f5e9cf0b</p>
-                        <p class="fragment">Concept d'ajout de donn&eacute;es</p>
-                        <p class="fragment">Les 3 &eacute;tats</p>
+                        <ul>
+                        <li class="fragment">Op&eacute;rations locales (presque toutes)</li>
+                        <li class="fragment">Int&eacute;grit&eacute; (SHA1) - b40508769cb0aac22d9f73c8669c3a13f5e9cf0b</li>
+                        <li class="fragment">Concept d'ajout de donn&eacute;es</li>
+                        <li class="fragment">Les 3 &eacute;tats</li>
+                        </ul>
 				    </section>
 
 				    <section>
@@ -131,14 +135,16 @@
                         <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/02-git-basics/images/lifecycle.png" /></p>
 				    </section>
                 </section>
-                <!-- Les branche -->
-				<section data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Les bases</h2>
-                </section>
-                <!-- Les base #1 -->
+
+                <!-- Les base -->
 				<section data-background="#4d7e65">
+
+				    <section data-transition="convex">
+				    	<h2>Les bases</h2>
+                    </section>
+
 				    <section>
-                        <h2>Les premier pas</h2>
+                        <h3>Les param&egrave;tres de base</h3>
                         <p class="fragment">Param&egrave;trer son identit&eacute; dans le fichier ~/.gitconfig</p>
                         <pre class="fragment"><code>$ git config --global user.name "Davy MELINA"</code></pre>
                         <pre class="fragment"><code>$ git config --global user.email davy.melina@gmail.com</code></pre>
@@ -146,16 +152,18 @@
                         <p class="fragment">V&eacute;rifier les param&egrave;tres</p>
                         <pre class="fragment"><code>$ git config --list</code></pre>
 				    </section>
+
 				    <section>
-                        <h4>Un premier workflow simple</h4>
+                        <h3>Un premier workflow simple</h3>
                         <p class="fragment">Initialiser un d&eacute;p&ocirc;t Git</p>
                         <pre class="fragment"><code>$ git init</code></pre>
-                        <p class="fragment">Ajouter des fichiers dans l'espace de staging</p>
+                        <p class="fragment">Ajouter des fichiers dans l'espace de staging (index)</p>
                         <pre class="fragment"><code>$ git add *.go</code></pre>
                         <pre class="fragment"><code>$ git add README.md</code></pre>
                         <p class="fragment">Commiter des fichiers</p>
                         <pre class="fragment"><code>$ git commit -m "Initial import."</code></pre>
 				    </section>
+
 				    <section>
                         <p>D&eacute;placer un fichiers</p>
                         <pre class="fragment"><code>$ git mv version.go common.go</code></pre>
@@ -164,11 +172,9 @@
                         <pre class="fragment"><code>$ git rm hello.go</code></pre>
                         <pre class="fragment"><code>$ git commit -m "Clean dead code."</code></pre>
 				    </section>
-                <!-- Les base #2, analyser -->
-				</section>
-				<section data-background="#4d7e65">
+
 					<section>
-					    <h2>Analyser</h2>
+					    <h3>Analyser</h3>
                         <p class="fragment">V&eacute;rifier l'&eacute;tat des fichiers</p>
                     	<pre class="fragment"><code>$ git status</code></pre>
                         <pre class="fragment"><code>On branch develop
@@ -188,6 +194,7 @@ Untracked files:
 
     LICENSE</code></pre>
 					</section>
+
 				    <section>
                         <p>Voir les modifications des fichiers</p>
                         <pre class="fragment"><code>$ git diff</code></pre>
@@ -223,6 +230,7 @@ Date:   Thu Oct 1 16:45:17 2015 +0200
     Import new dataschema
 </code></pre>
 				    </section>
+
 				    <section>
                     <p>Mieux encore</p>
                     <pre class="fragment"><code>$ git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit</code></pre>
@@ -236,31 +244,30 @@ Date:   Thu Oct 1 16:45:17 2015 +0200
 |/  
 * 38e8c59 - Initial commit (73 seconds ago) &lt;Davy MELINA&gt;
                     </code></pre>
-                    <pre class="fragment"><code>$ git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit"</code></pre>
 				    </section>
-				</section>
-                <!-- Les base #3, Annuler des actions -->
-				<section data-background="#4d7e65">
+
 				    <section>
-					    <h2>Annuler des actions</h2>
-                        <p class="fragment">Modifier le dernier commit</p>
-                        <pre class="fragment"><code>$ git commit --amend</code></pre>
-                        <p class="fragment">Un exemple ?</p>
-                        <pre class="fragment"><code>$ git add README.md</code></pre>
-                        <pre class="fragment"><code>$ git add *.go</code></pre>
-                        <pre class="fragment"><code>$ git commit -m "Initial import."</code></pre>
-                        <pre class="fragment"><code>$ git add LICENSE</code></pre>
+					    <h3>Annuler des actions</h3>
                         <p class="fragment">R&eacute;cuperer un fichier</p>
-                        <pre class="fragment"><code>$ git checkout -- LICENSE</code></pre>
+                        <pre class="fragment"><code>$ git checkout -- &lt;file&gt;</code></pre>
                         <p class="fragment">Revenir &agrave; un snapshot</p>
                         <pre class="fragment"><code>$ git reset --hard &lt;commit&gt;</code></pre>
+                        <p class="fragment">Modifier le dernier commit</p>
+                        <pre class="fragment"><code>$ git commit --amend</code></pre>
+                        <p class="fragment">Remiser son travail</p>
+                        <pre class="fragment"><code>$ git stash</code></pre>
 				    </section>
+
 				    <section>
-                        <p>Enlever du staging un fichier</p>
-                        <pre class="fragment"><code>$ git reset HEAD &lt;file&gt;</code></pre>
-				    </section>
+                        <h4>Exemple: Refaire son dernier commit</h4>
+                        <pre class="fragment"><code>$ git add *.go</code></pre>
+                        <pre class="fragment"><code>$ git commit -m "Initial import."</code></pre>
+                        <pre class="fragment"><code>$ git add README.md</code></pre>
+                        <pre class="fragment"><code>$ git commit --amend -m "Initial import and README"</code></pre>
+                    </section>
+
 				    <section>
-                        <p>Un exemple ?</p>
+                        <h4>Exemple: Enlever du staging un fichier</h4>
                         <pre class="fragment"><code>$ git add .</code></pre>
                         <pre class="fragment"><code>$ git status</code></pre>
                         <pre class="fragment"><code>On branch master
@@ -287,11 +294,33 @@ Changes not staged for commit:
 
 </code></pre>
 				    </section>
-				</section>
-                <!-- Les base #4, Ignorer des actions -->
-				<section data-background="#4d7e65">
+
+                    <section>
+                        <h4>Exemple: Remiser des modifications avec stash</h4>
+                        <p class="fragment">Cr&eacute;er une nouvelle remise</p>
+                        <pre class="fragment"><code>$ git stash</code></pre>
+                        <pre class="fragment"><code>Saved working directory and index state WIP on master: 6a9f6d7 Merge branch 'test'
+HEAD is now at 6a9f6d7 Merge branch 'test'
+</code></pre>
+                        <p class="fragment">Voir les remises</p>
+                        <pre class="fragment"><code>$ git stash list</code></pre>
+                        <pre class="fragment"><code>stash@{0}: WIP on master: 6a9f6d7 Merge branch 'test'</code></pre>
+                        <p class="fragment">Appliquer une remise</p>
+                        <pre class="fragment"><code>$ git stash apply stash@{0}</code></pre>
+                        <pre class="fragment"><code>On branch master
+Changes not staged for commit:
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+
+    modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+</code></pre>
+</code></pre>
+                    </section>
+
 				    <section>
-					    <h2>Ignorer des fichiers</h2>
+					    <h3>Ignorer des fichiers</h3>
                         <p class="fragment">Le fichier .gitignore</p>
                         <pre class="fragment"><code>*.[oa]
 *~
@@ -304,30 +333,30 @@ Changes not staged for commit:
                         </ul>
 
 				    </section>
+
 				    <section>
-                        <p>Exemple de fichier .gitignore</p>
+                        <h4>Un exemple de fichier .gitignore</h4>
                         
-                        <pre class="fragment"><code># ignorer les fichier *.a mais suivre lib.a
+                        <pre class="fragment"><code># Ignorer les fichier *.a mais suivre lib.a
 *.a
 !lib.a
 
-# ignorer uniquement le fichier TODO &agrave; la racine du projet
+# Ignorer uniquement le fichier TODO &agrave; la racine du projet
 /TODO
 
-# ignorer tous les fichiers dans le r&eacute;pertoire build
+# Ignorer tous les fichiers dans le r&eacute;pertoire build
 build/
 
-# ignorer doc/notes.txt, mais pas doc/server/arch.txt
+# Ignorer doc/notes.txt, mais pas doc/server/arch.txt
 doc/*.txt
 
-# ignorer tous les fichiers .txt sous le r&eacute;pertoire doc/
+# Ignorer tous les fichiers .txt sous le r&eacute;pertoire doc/
 doc/**/*.txt</code></pre>
 				    </section>
-				</section>
-                <!-- Les base #5, Repos distant -->
-				<section data-background="#4d7e65">
+
 				    <section>
-					    <h2>Les &eacute;tiquette / Les tags</h2>
+					    <h3>Les &eacute;tiquettes / Les tags</h3>
+                        <p class="fragment">Un tag sert &agrave; <font color="#fa0">marquer</font> l'&eacute;tat d'un projet dans son <font color="#fa0">historique</font>.</p>
                         <p class="fragment">Voir les tags</p>
                         <pre class="fragment"><code>$ git tag</code></pre>
                         <pre class="fragment"><code>v0.1
@@ -339,6 +368,7 @@ v0.3</code></pre>
 v1.8.2
 v1.8.3</code></pre>
 				    </section>
+
 				    <section>
                         <p>Cr&eacute;er un tag simple sur le dernier commit</p>
                         <pre class="fragment"><code>$ git tag v0.2</code></pre>
@@ -361,6 +391,7 @@ Date:   Wed Oct 14 18:01:15 2015 +0200
     test
 </code></pre>
 				    </section>
+
 				</section>
 
                 <!-- Les branches -->
@@ -371,24 +402,24 @@ Date:   Wed Oct 14 18:01:15 2015 +0200
                     </section>
 
                     <section>
-					<h2>D&eacute;finition</h2>
+					<h3>D&eacute;finition</h3>
                     <p class="fragment">Cr&eacute;er une <font color="#fa0">branche</font> signifie <font color="#fa0">diverger</font> de la ligne principale de d&eacute;veloppement et <font color="#fa0">continuer</font> &agrave; travailler sans impacter cette ligne.</p>
                     </section>
 
                     <section>
-				    <h2>Concr&egrave;tement ?</h2>
+				    <h3>Concr&egrave;tement ?</h3>
                     <pre class="fragment"><code>$ git add README test.rb LICENSE
-$ git commit -m "ini commit of my project"</code></pre>
+$ git commit -m "The initial commit of my project"</code></pre>
                     <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commit-and-tree.png" /></p>
                     </section>
 
                     <section>
-                        <h2>Et si on commits encore ?</h2>
+                        <h3>Et si on commits encore ?</h3>
                         <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/03-git-branching/images/commits-and-parents.png" /></p>
                     </section>
 
                     <section>
-                        <h2>Vue globale d'une branche</h2>
+                        <h3>Vue globale d'une branche</h3>
                         <p class="fragment"><img style="background: white;" data-src="https://git-scm.com/book/en/v2/book/03-git-branching/images/branch-and-history.png" /></p>
                     </section>
 
@@ -407,6 +438,7 @@ $ git commit -m "ini commit of my project"</code></pre>
 				    	<h4>Merge et Rebase</h4>
                     </section>
                     <section>
+                        <h3>Les commandes de bases</h3>
                         <p class="fragment">Voir les branches</p>
                         <pre class="fragment"><code>$ git branch</code></pre>
                         <p class="fragment">Cr&eacute;er une branche</p>
@@ -420,7 +452,7 @@ $ git commit -m "ini commit of my project"</code></pre>
                         <p class="fragment">Rebase d'une branche</p>
                         <pre class="fragment"><code>$ git rebase &lt;branch&gt;</code></pre>
                     </section>
-				    <section data-transition="convex">
+				    <section>
 				    	<h2>Merge</h2>
                     </section>
                     <section>
@@ -504,7 +536,32 @@ $ git commit client.go -m "Hotfix 001"</code></pre>
                         <p class="fragment">C8 est un <font color="#fa0">merge commit</font> qui a <font color="#fa0">deux parents</font></p>
                     </section>
                     <section>
-                        <h4>G&ecirc;rer les conflits</h4>
+                        <h2>Rebase</h2>
+                    </section>
+                    <section>
+					    <h3>Un exemple ?</h3>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-rebase-1.png" /></p>
+                    </section>
+                    <section>
+					    <h3>Le code client est ready</h3>
+                        <p class="fragment">Merge de la banche client</p>
+                        <pre class="fragment"><code>$ git merge --no-ff client</code></pre>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-rebase-2.png" /></p>
+                    </section>
+                    <section>
+					    <h3>Tester l'implementation du client depuis la branche server</h3>
+                        <p class="fragment">Rebase de la banche server</p>
+                        <pre class="fragment"><code>$ git checkout server</code></pre>
+                        <pre class="fragment"><code>$ git rebase master</code></pre>
+                        <p class="fragment"><img style="background: white; padding: 10px;" data-src="images/git-rebase-3.png" /></p>
+                    </section>
+                    <section>
+					    <h3>Attention, chauss&eacute;e glissante</h3>
+                        <p><img style="background: white;" data-src="images/chaussee_glissante.png" /></p>
+                        <p class="fragment">On ne rebase jamais des commits qui ont d&eacute;j&agrave; pouss&eacute; <br />sur un d&eacute;p&ocirc;t public</p>
+                    </section>
+                    <section>
+                        <h3>G&ecirc;rer les conflits</h3>
                         <pre class="fragment"><code>$ git merge doc123</code></pre>
                         <pre class="fragment"><code>Auto-merging README.md
 CONFLICT (content): Merge conflict in README.md
@@ -519,23 +576,17 @@ davy melina
                         <pre class="fragment"><code>$ git commit</code></pre>
                     </section>
                     <section>
-                        <h2>Rebase</h2>
-                    </section>
-                    <section>
                         <h2>Cherry-pick</h2>
-                    </section>
-                    <section>
-                        <h2>Stash</h2>
                     </section>
                 </section>
 
-                <!-- Les Repos distant -->
+                <!-- Les dépôts distant -->
 				<section data-background="#336699">
-					<h2>Les d&eacute;p&ocirc;ts distants</h2>
-                </section>
-				<section data-background="#336699">
+				    <section data-transition="convex">
+				    	<h2>Les d&eacute;p&ocirc;ts distants</h2>
+                    </section>
                     <section>
-                       <h2>Les origines</h2>
+                       <h3>Les origines</h3>
                        <p class="fragment">Une <font color="#fa0">origine</font> correspond &agrave; d&eacute;p&ocirc;ts <font color="#fa0">distant</font></p>
                        <p class="fragment">Un d&eacute;p&ocirc;t <font color="#fa0">local</font> peut avoir <font color="#fa0">plusieurs origines</font></p>
                        <p class="fragment">Une <font color="#fa0">origine</font> contient <font color="#fa0">une ou plusieurs branches</font></p>
@@ -596,14 +647,14 @@ chezwam https://chez.wam/apprendre-git.git (push)
 
                 <!-- Git Flow -->
 				<section data-background="#666633">
-				    <section data-background="#666633">
+				    <section data-transition="convex">
 					<h2>Git Flow</h2>
                     </section>
-				    <section data-background="#666633">
+                    <section>
 					    <h4>Cr&eacute;ation d'une feature</h4>
                         <p><img style="background: white; padding: 10px;" data-src="images/git-flow-1.png" /></p>
                     </section>
-				    <section data-background="#666633">
+                    <section>
 					    <h4>Merge de la feature</h4>
                         <p><img style="background: white; padding: 10px;" data-src="images/git-flow-2.png" /></p>
                     </section>
@@ -628,7 +679,26 @@ chezwam https://chez.wam/apprendre-git.git (push)
                     </section>
                 </section>
                 <section>
-                    <h2>Des questions ?</h2>
+				    <section data-transition="convex">
+                        <h2>Comment aller plus loin ?!</h2>
+                    </section>
+                    <section>
+                        <h2>RTFM</h2>
+                        <h3 class="fragment">Read The Fucking Manual</h3>
+                        <ul style="list-style-type: none;">
+                        <li class="fragment">man git</li>
+                        <li class="fragment">man git-diff</li>
+                        <li class="fragment">man git-stash</li>
+                        <li class="fragment">man git-reflog</li>
+                        <li class="fragment">man git-merge</li>
+                        <li class="fragment">man git-rebase</li>
+                        <li class="fragment">man git-remote</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h1>Fin</h1>
+                        <h3>Des questions ?</h3>
+                    </section>
                 </section>
 
 			</div>
